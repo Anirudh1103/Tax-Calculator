@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>GST Rates in India</title>
+  <style>
+    table {
+      border-collapse: collapse;
+      width: 50%;
+      margin: 20px auto; /* Center the table horizontally */
+    }
+
+    th, td {
+      text-align: left;
+      padding: 8px;
+      border: 1px solid #ddd;
+    }
+
+    th {
+      background-color: #f2f2f2;
+    }
+
+    tr:nth-child(even) {
+      background-color: #f2f2f2;
+    }
+    *{
+        text-align: center;
+    }
+  </style>
+</head>
+<body>
+
+<h2>GST Calculator</h2>
+<h3>Enter the Price & Choose the Category</h3>
+<form>
+<label for="amount">Amount</label>
+<input type="number" name = "amount" id = "amount" required></input>
+<select name="percentage" id = "percentage">
+    <option value="0">Essential items</option>
+    <option value="0.25">Rough diamonds</option>
+    <option value="3">Gold & Silver</option>
+    <option value="5">Sugar, Tea & Milk food for babies</option>
+    <option value="12">Real estate (under construction)</option>
+    <option value="18">Common use goods (soaps, oils)</option>
+    <option value="18">Electronics & furniture</option>
+    <option value="18">Services (telecom)</option>
+    <option value="28">Tobacco (Unmanufactured)</option>
+  </select>
+  <br><br>
+  <input type="submit" value="Calculate GST">
+</form>
+<p id="result"></p>
+
+<script>
+  const form = document.querySelector('form');
+
+  form.addEventListener('submit', (event) => {
+    event.preventDefault();
+
+    const amount = parseFloat(document.getElementById('amount').value);
+    const percentage = parseFloat(document.getElementById('percentage').value);
+
+    // Calculation of GST
+    const taxAmount = (amount * percentage)/100;
+
+    const resultElement = document.getElementById('result');
+    resultElement.textContent = `The calculated tax amount is: ₹${taxAmount.toFixed(2)}`;
+  });
+</script>
+<h2>GST Rates in India</h2>
+<table>
+  <tr>
+    <th>Category</th>
+    <th>GST Rate</th>
+  </tr>
+  <tr>
+    <td>Essential items (Fresh Milk, Curd)</td>
+    <td>0%</td>
+  </tr>
+  <tr>
+    <td>Rough diamonds</td>
+    <td>0.25%</td>
+  </tr>
+  <tr>
+    <td>Gold & Silver</td>
+    <td>3%</td>
+  </tr>
+  <tr>
+    <td>Sugar, Tea & Milk food for babies</td>
+    <td>5%</td>
+  </tr>
+  <tr>
+    <td>Real estate (under construction)</td>
+    <td>12%</td>
+  </tr>
+  <tr>
+    <td>Common use goods (soaps, oils)</td>
+    <td>18%</td>
+  </tr>
+  <tr>
+    <td>Electronics & furniture</td>
+    <td>18%</td>
+  </tr>
+  <tr>
+    <td>Services (telecom)</td>
+    <td>18%</td>
+  </tr>
+  <tr>
+    <td>Tobacco (Unmanufactured)</td>
+    <td>28%</td>
+  </tr>
+</table>
+
+</body>
+</html>

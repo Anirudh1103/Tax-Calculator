@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Corporate Tax Calculator</title>
+</head>
+<style>
+    *{
+        text-align:center;
+    }
+</style>
+<body>
+  <h2>Corporate Tax Calculator</h2>
+
+  <form>
+    <label for="total-income">Total Income:</label>
+    <input type="number" id="total-income" name="total-income"><br><br>
+
+    <label for="overheads">Overheads:</label>
+    <input type="number" id="overheads" name="overheads"><br><br>
+
+    <input type="submit" value="Calculate Tax">
+  </form>
+
+  <p id="result"></p>
+
+  <h4>Note: In India Corporate tax is 25% which is calculated for the profit with consideration of 6% depreciation.</h4>
+
+  <script>
+    const form = document.querySelector('form');
+
+    form.addEventListener('submit', (event) => {
+      event.preventDefault();
+
+      const totalIncome = parseFloat(document.getElementById('total-income').value);
+      const overheads = parseFloat(document.getElementById('overheads').value);
+
+      const taxableIncome = totalIncome - overheads;
+
+      // Assuming a simplified tax rate of 25% for demonstration
+      const taxAmount = taxableIncome * 0.25;
+
+      const resultElement = document.getElementById('result');
+      resultElement.textContent = `The calculated tax amount is: ₹${taxAmount.toFixed(2)}`;
+    });
+  </script>
+
+</body>
+</html>
