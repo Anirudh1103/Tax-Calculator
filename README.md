@@ -10,7 +10,7 @@ Tax tips and advice: Provides general tax tips and guidance.
 Real-time updates: Keeps up-to-date with the latest tax laws and regulations.
 Technologies Used:
 
-Frontend: HTML, CSS, JavaScript
+Frontend: HTML, CSS, JavaScript <br>
 Backend: Flask
 
 # This project is still under development
