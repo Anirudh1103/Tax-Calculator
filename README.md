@@ -13,4 +13,4 @@ Technologies Used:
 Frontend: HTML, CSS, JavaScript
 Backend: Flask
 
-#This project is still under development
+# This project is still under development
