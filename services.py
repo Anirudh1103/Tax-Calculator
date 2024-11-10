@@ -9,7 +9,11 @@ TAX_BRACKETS = [
 STANDARD_DEDUCTION = 12500  # Standard deduction amount
 
 def calculate_tax(income, deductions):
-    """Calculates the income tax and returns the result to result.html page"""
+    """
+    Calculates the income tax and returns the result
+    Params: income -> (int) & dedcutions -> (int)
+    Return: tax -> (float) 
+    """
     # Apply standard deduction if no deductions provided
     taxable_income = max(0, income - (deductions or STANDARD_DEDUCTION))
     tax = 0
@@ -24,12 +28,20 @@ def calculate_tax(income, deductions):
             break
     return tax
 def calculate_GST(price, percentage):
-    """Calculates the GST based on the category of the product and resturns the result to result_universal.html"""
+    """
+    Calculates the GST based on the category of the product and resturns the result
+    Params: price -> (int) & percentage -> (float)
+    Return: tax -> (float) 
+    """
     tax = (price * percentage)/100
     return tax
 
 def calculate_Corporate_Tax(Total_income,OverHeads):
-    """Calculates the Corporate Tax based on the Total income, Overheads and Depreciation"""
+    """
+    Calculates the Corporate Tax based on the Total income, Overheads and Depreciation
+    Params: Total_income -> (int) & Overheads -> (int)
+    Return: tax -> (float) 
+    """
     #Default Depreciation = 6%
     #Corporate Tax is 25% on profit
     Depreciation = Total_income * 0.06
