@@ -1,39 +1,32 @@
-
-TAX_BRACKETS = [
-    (10000, 0.1),     # 10% for income up to 10,000
-    (30000, 0.2),     # 20% for income between 10,001 and 40,000
-    (40000, 0.3),     # 30% for income between 40,001 and 80,000
-    (float('inf'), 0.4)  # 40% for income above 80,000
-]
-
-STANDARD_DEDUCTION = 12500  # Standard deduction amount
-
+#Income tax
 def calculate_tax(income, deductions):
     """
     Calculates the income tax and returns the result
     Params: income -> (int) & dedcutions -> (int)
-    Return: tax -> (float) 
+    Return: taxAmount -> (float) 
     """
-    # Apply standard deduction if no deductions provided
-    taxable_income = max(0, income - (deductions or STANDARD_DEDUCTION))
-    tax = 0
-
-    # Calculate tax based on progressive tax brackets
-    for limit, rate in TAX_BRACKETS:
-        if taxable_income > limit:
-            tax += limit * rate
-            taxable_income -= limit
-        else:
-            tax += taxable_income * rate
-            break
-    return tax
+    taxable_income = income - deductions
+    percentage = 0
+    if taxable_income >300000:
+        percentage = 0.05
+    elif taxable_income > 600000:
+        percentage = 0.10
+    elif taxable_income >900000:
+        percentage = 0.15
+    elif taxable_income > 1200000:
+        percentage = 0.20
+    elif taxable_income > 1500000:
+        percentage = 0.30
+    taxAmount = taxable_income * percentage
+    return taxAmount
+        
 def calculate_GST(price, percentage):
     """
     Calculates the GST based on the category of the product and resturns the result
     Params: price -> (int) & percentage -> (float)
     Return: tax -> (float) 
     """
-    tax = (price * percentage)/100
+    tax = (price * percentage)
     return tax
 
 def calculate_Corporate_Tax(Total_income,OverHeads):
@@ -47,4 +40,58 @@ def calculate_Corporate_Tax(Total_income,OverHeads):
     Depreciation = Total_income * 0.06
     Profit = Total_income - (OverHeads  + Depreciation)
     tax = Profit * 0.25
+    return tax
+
+def calculate_perquisite_tax(value_of_perks, rate):
+    """
+    Calculates the perquisite tax.
+    Params: value_of_perks -> (int), rate -> (float)
+    Return: tax -> (float) 
+    """
+    tax = (value_of_perks * rate) / 100
+    return tax
+
+def calculate_capital_gain_tax(capital_gain, rate):
+    """
+    Calculates the capital gain tax.
+    Params: capital_gain -> (int), rate -> (float)
+    Return: tax -> (float) 
+    """
+    tax = (capital_gain * rate) / 100
+    return tax
+
+def calculate_securities_transaction_tax(transaction_value, rate):
+    """
+    Calculates the securities transaction tax.
+    Params: transaction_value -> (int), rate -> (float)
+    Return: tax -> (float) 
+    """
+    tax = (transaction_value * rate) / 100
+    return tax
+
+def calculate_sales_tax(price, rate):
+    """
+    Calculates the sales tax.
+    Params: price -> (int), rate -> (float)
+    Return: tax -> (float) 
+    """
+    tax = (price * rate) / 100
+    return tax
+
+def calculate_customs_duty(import_value, rate):
+    """
+    Calculates the customs duty.
+    Params: import_value -> (int), rate -> (float)
+    Return: tax -> (float) 
+    """
+    tax = (import_value * rate) / 100
+    return tax
+
+def calculate_entertainment_tax(ticket_price, rate):
+    """
+    Calculates the entertainment tax.
+    Params: ticket_price -> (int), rate -> (float)
+    Return: tax -> (float) 
+    """
+    tax = (ticket_price * rate) / 100
     return tax
