@@ -1,90 +1,134 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title>Tax Calculator</title>
+    <title>Corporate Tax Calculator</title>
+    <style>
+    table {
+        border-collapse: collapse;
+        width: 50%;
+        margin: 20px auto; /* Center the table horizontally */
+      }
+  
+      th, td {
+        text-align: left;
+        padding: 8px;
+        border: 1px solid #ddd;
+      }
+  
+      th {
+        background-color: #f2f2f2;
+      }
+  
+      tr:nth-child(even) {
+        background-color: #f2f2f2;
+      }
+      *{
+          text-align: center;
+      }
+    </style>
 </head>
-<style>
-    *{
-        text-align:center;
-    }
-</style>
 <body>
-  <h2>Corporate Tax Calculator</h2>
+    <h2>Corporate Tax Calculator</h2>
+<h3>Enter the Total Income & Overheads </h3>
+    <form align="center">
+        <label for="total-income">Total Income (₹): </label>
+        <input type="number" id="total-income" required>
 
-  <form>
-    <label for="total-income">Total Income:</label>
-    <input type="number" id="total-income" name="total-income"><br><br>
+        <label for="overheads">Overheads (₹): </label>
+        <input type="number" id="overheads" required>
+        <br><br>
+        <button type="submit">Calculate Tax</button>
+    </form>
+    <div id="result"></div>
+    <h2>Tax Rates in India</h2>
+    <table align="center">
+        <tr>
+            <th>Taxable Income</th>
+            <th>Old Tax Rate</th>
+            <th>New Tax Rate</th>
+        </tr>
+        <tr>
+            <td>0 - 2.5 lakh</td>
+            <td>Exempt</td>
+            <td>Exempt</td>
+        </tr>
+        <tr>
+            <td>2.5 lakh - 5 lakh</td>
+            <td>5%</td>
+            <td>5%</td>
+        </tr>
+        <tr>
+            <td>5 lakh - 7.5 lakh</td>
+            <td>20%</td>
+            <td>10%</td>
+        </tr>
+        <tr>
+            <td>7.5 lakh - 10 lakh</td>
+            <td>20%</td>
+            <td>15%</td>
+        </tr>
+        <tr>
+            <td>10 lakh - 12.5 lakh</td>
+            <td>30%</td>
+            <td>20%</td>
+        </tr>
+        <tr>
+            <td>12.5 lakh - 15 lakh</td>
+            <td class="old-rate">30%</td>
+            <td>25%</td>
+        </tr>
+        <tr>
+            <td>Above 15 lakh</td>
+            <td>30%</td>
+            <td>30%</td>
+        </tr>
+    </table>
+    <h4 align="center" >Note: 6% depreciation is considered.</h4>
+    <h4>Overheads include indirect business costs such as office rent, utilities, administrative salaries, marketing, advertising, transportation, maintenance, depreciation, insurance, and legal or accounting fees. These expenses support general operations but are not tied to specific products or services.</h4>
+    <script>
+        const form = document.querySelector('form');
 
-    <label for="overheads">Overheads:</label>
-    <input type="number" id="overheads" name="overheads"><br><br>
+        form.addEventListener('submit', (event) => {
+            event.preventDefault();
 
-    <input type="submit" value="Calculate Tax">
-  </form>
+            const totalIncome = parseFloat(document.getElementById('total-income').value);
+            const overheads = parseFloat(document.getElementById('overheads').value);
+            const taxableIncome = totalIncome - overheads;
 
-  <p id="result"></p>
-  <h2>Tax Slabs</h2>
-  <table align="center">
-      <tr>
-          <th>Taxable Income</th>
-          <th>Old Tax Rate</th>
-          <th>New Tax Rate</th>
-      </tr>
-      <tr>
-          <td>0 - 2.5 lakh</td>
-          <td>Exempt</td>
-          <td>Exempt</td>
-      </tr>
-      <tr>
-          <td>2.5 lakh - 5 lakh</td>
-          <td>5%</td>
-          <td>5%</td>
-      </tr>
-      <tr>
-          <td>5 lakh - 7.5 lakh</td>
-          <td>20%</td>
-          <td>10%</td>
-      </tr>
-      <tr>
-          <td>7.5 lakh - 10 lakh</td>
-          <td>20%</td>
-          <td>15%</td>
-      </tr>
-      <tr>
-          <td>10 lakh - 12.5 lakh</td>
-          <td>30%</td>
-          <td>20%</td>
-      </tr>
-      <tr>
-          <td>12.5 lakh - 15 lakh</td>
-          <td class="old-rate">30%</td>
-          <td>25%</td>
-      </tr>
-      <tr>
-          <td>Above 15 lakh</td>
-          <td>30%</td>
-          <td>30%</td>
-      </tr>
-  </table>
-  <h4>Note: 6% depreciation is considered.</h4>
+            let taxAmount = 0;
 
-  <script>
-    const form = document.querySelector('form');
+            if (taxableIncome > 1500000) {
+                taxAmount += (taxableIncome - 1500000) * 0.30;
+                taxAmount += 250000 * 0.25;
+                taxAmount += 250000 * 0.20;
+                taxAmount += 250000 * 0.15;
+                taxAmount += 250000 * 0.10;
+                taxAmount += 250000 * 0.05;
+            } else if (taxableIncome > 1250000) {
+                taxAmount += (taxableIncome - 1250000) * 0.25;
+                taxAmount += 250000 * 0.20;
+                taxAmount += 250000 * 0.15;
+                taxAmount += 250000 * 0.10;
+                taxAmount += 250000 * 0.05;
+            } else if (taxableIncome > 1000000) {
+                taxAmount += (taxableIncome - 1000000) * 0.20;
+                taxAmount += 250000 * 0.15;
+                taxAmount += 250000 * 0.10;
+                taxAmount += 250000 * 0.05;
+            } else if (taxableIncome > 750000) {
+                taxAmount += (taxableIncome - 750000) * 0.15;
+                taxAmount += 250000 * 0.10;
+                taxAmount += 250000 * 0.05;
+            } else if (taxableIncome > 500000) {
+                taxAmount += (taxableIncome - 500000) * 0.10;
+                taxAmount += 250000 * 0.05;
+            } else if (taxableIncome > 250000) {
+                taxAmount += (taxableIncome - 250000) * 0.05;
+            }
 
-    form.addEventListener('submit', (event) => {
-      event.preventDefault();
-
-      const totalIncome = parseFloat(document.getElementById('total-income').value);
-      const overheads = parseFloat(document.getElementById('overheads').value);
-
-      const taxableIncome = totalIncome - overheads;
-
-      // Assuming a simplified tax rate of 25% for demonstration
-      const taxAmount = taxableIncome * 0.25;
-
-      const resultElement = document.getElementById('result');
-      resultElement.textContent = `The calculated tax amount is: ₹${taxAmount.toFixed(2)}`;
-    });
-  </script>
-
+            const resultElement = document.getElementById('result');
+            resultElement.textContent = `The calculated tax amount is: ₹${taxAmount.toFixed(2)}`;
+        });
+    </script>
 </body>
 </html>
