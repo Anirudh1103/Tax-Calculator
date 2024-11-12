@@ -84,7 +84,7 @@
         </tr>
     </table>
     <h4 align="center" >Note: 6% depreciation is considered.</h4>
-    <h4>Overheads include indirect business costs such as office rent, utilities, administrative salaries, marketing, advertising, transportation, maintenance, depreciation, insurance, and legal or accounting fees. These expenses support general operations but are not tied to specific products or services.</h4>
+    <h4>Overheads include any additional income a corporate person may have like FD, Rental income, Stocks, Mutual Funds.</h4>
     <script>
         const form = document.querySelector('form');
 
@@ -93,8 +93,7 @@
 
             const totalIncome = parseFloat(document.getElementById('total-income').value);
             const overheads = parseFloat(document.getElementById('overheads').value);
-            const taxableIncome = totalIncome - overheads;
-
+            const taxableIncome = totalIncome + overheads;
             let taxAmount = 0;
 
             if (taxableIncome > 1500000) {
