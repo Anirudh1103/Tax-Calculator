@@ -48,7 +48,7 @@ def calculate_perquisite_tax(value_of_perks, rate):
     Params: value_of_perks -> (int), rate -> (float)
     Return: tax -> (float) 
     """
-    tax = (value_of_perks * rate) / 100
+    tax = (value_of_perks * rate)
     return tax
 
 def calculate_capital_gain_tax(capital_gain, rate):
@@ -57,7 +57,7 @@ def calculate_capital_gain_tax(capital_gain, rate):
     Params: capital_gain -> (int), rate -> (float)
     Return: tax -> (float) 
     """
-    tax = (capital_gain * rate) / 100
+    tax = (capital_gain * rate)
     return tax
 
 def calculate_securities_transaction_tax(transaction_value, rate):
@@ -66,7 +66,7 @@ def calculate_securities_transaction_tax(transaction_value, rate):
     Params: transaction_value -> (int), rate -> (float)
     Return: tax -> (float) 
     """
-    tax = (transaction_value * rate) / 100
+    tax = (transaction_value * rate)
     return tax
 
 def calculate_sales_tax(price, rate):
@@ -75,7 +75,7 @@ def calculate_sales_tax(price, rate):
     Params: price -> (int), rate -> (float)
     Return: tax -> (float) 
     """
-    tax = (price * rate) / 100
+    tax = (price * rate) 
     return tax
 
 def calculate_customs_duty(import_value, rate):
@@ -84,7 +84,7 @@ def calculate_customs_duty(import_value, rate):
     Params: import_value -> (int), rate -> (float)
     Return: tax -> (float) 
     """
-    tax = (import_value * rate) / 100
+    tax = (import_value * rate)
     return tax
 
 def calculate_entertainment_tax(ticket_price, rate):
@@ -93,5 +93,5 @@ def calculate_entertainment_tax(ticket_price, rate):
     Params: ticket_price -> (int), rate -> (float)
     Return: tax -> (float) 
     """
-    tax = (ticket_price * rate) / 100
+    tax = (ticket_price * rate)
     return tax
