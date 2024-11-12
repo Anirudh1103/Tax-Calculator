@@ -13,3 +13,31 @@ def testGST():
     #Test case 1: Spends  250000 rs for gold 
     result = calculate_GST(250000,0.03)
     assert result == 7500
+def testCorporateTax():
+    #Test case 1
+    result = calculate_Corporate_Tax(700000,35000)
+    assert result == 155750
+def testPerquisiteTax():
+    #Test case 1
+    result = calculate_perquisite_tax(10000,0.18)
+    assert result == 1800
+def testPerquisiteTax():
+    #Test case 1
+    result = calculate_perquisite_tax(10000,0.18)
+    assert result == 1800
+def testPerquisiteTax():
+    #Test case 1
+    result = calculate_perquisite_tax(10000,0.18)
+    assert result == 1800
+def testSalesTax():
+    #Test case 1
+    result = calculate_sales_tax(10000,0.18)
+    assert result == 1800
+def testCustomsDuty():
+    #Test case 1
+    result = calculate_customs_duty(10000,0.18)
+    assert result == 1800
+def testEntertainment():
+    #Test case 1
+    result = calculate_entertainment_tax(10000,0.18)
+    assert result == 1800
