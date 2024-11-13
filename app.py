@@ -40,7 +40,25 @@ def GST():
 def corporate():
     return render_template('corporate_tax.html')
 
+@app.route('/cgt')
+def capitalGainTax():
+    return render_template('cgt.html')
 
+@app.route('/property_tax')
+def propertytax():
+    return render_template('property_tax.html')
+
+@app.route('/stt')
+def securityTax():
+    return render_template('stt.html')
+
+@app.route('/customs_tax')
+def ct():
+    return render_template('customs.html')
+
+@app.route('/entertainment_tax')
+def entertainment():
+    return render_template('entertainment.html')
 
 if __name__ == '__main__':
     app.run(debug=True)
