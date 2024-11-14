@@ -1,0 +1,187 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Perquisite Tax Calculator</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link href="{{url_for('static', filename='form.css')}}" rel="stylesheet">
+    <link href="{{url_for('static', filename='style.css')}}" rel="stylesheet">
+    <style>
+      /* Additional custom styles */
+      .cta {
+        position: relative;
+        margin: auto;
+        padding: 12px 18px;
+        transition: all 0.2s ease;
+        border: none;
+        background: none;
+        cursor: pointer;
+      }
+
+      .cta:before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        display: block;
+        border-radius: 50px;
+        background: #b1dae7;
+        width: 45px;
+        height: 45px;
+        transition: all 0.3s ease;
+      }
+
+      .cta span {
+        position: relative;
+        font-family: "Ubuntu", sans-serif;
+        font-size: 18px;
+        font-weight: 700;
+        letter-spacing: 0.05em;
+        color: #234567;
+      }
+
+      .cta svg {
+        position: relative;
+        top: 0;
+        margin-left: 10px;
+        fill: none;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+        stroke: #234567;
+        stroke-width: 2;
+        transform: translateX(-5px);
+        transition: all 0.3s ease;
+      }
+
+      .cta:hover:before {
+        width: 100%;
+        background: #b1dae7;
+      }
+
+      .cta:hover svg {
+        transform: translateX(0);
+      }
+
+      .cta:active {
+        transform: scale(0.95);
+      }
+    </style>
+  </head>
+  <body>
+    <div class="login-root">
+      <div class="box-root flex-flex flex-direction--column" style="min-height: 100vh;flex-grow: 1;">
+        <div class="loginbackground box-background--white padding-top--64">
+          <div class="loginbackground-gridContainer">
+            <!-- Background styling sections -->
+          </div>
+        </div>
+
+        <!-- Navbar -->
+        <nav class="navbar">
+          <div class="logo">
+            <img src="/static/Images/main-logo.png" alt="Calculator Logo" class="main-logo"/>
+            <span style="color:white;">Tax Calculator</span>
+          </div>
+          <ul class="nav-links">
+            <li><a href="#">Home</a></li>
+            <li><a href="/TypesOfTaxes">More</a></li>
+            <li class="nav-item dropdown" style="margin-top: 4px;">
+              <a class="nav-link dropdown-toggle services" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"> Services </a>
+              <ul class="dropdown-menu">
+                <li><a class="dropdown-item" href="/income_tax">Income Tax</a></li>
+                <li><a class="dropdown-item" href="/corporate_tax">Corporate Tax</a></li>
+                <li><a class="dropdown-item" href="/perquisite_tax">Perquisite Tax</a></li>
+                <!-- Other services here -->
+              </ul>
+            </li>
+          </ul>
+          <div class="nav-buttons">
+            <a href="#" class="login">Contact</a>
+          </div>
+        </nav>
+
+        <!-- Form Section -->
+        <div class="box-root padding-top--24 flex-flex flex-direction--column" style="flex-grow: 1; z-index: 9;">
+          <div class="box-root padding-top--48 padding-bottom--24 flex-flex flex-justifyContent--center">
+            <h1><a rel="dofollow">Perquisite Tax Calculator</a></h1>
+          </div>
+          <div class="formbg-outer">
+            <div class="formbg">
+              <div class="formbg-inner padding-horizontal--48">
+                <form id="perquisite-form">
+                  <div class="field padding-bottom--24">
+                    <label for="basic-salary">Basic Salary: </label>
+                    <input type="number" name="basic-salary" id="basic-salary" required>
+                  </div>
+
+                  <div class="field padding-bottom--24">
+                    <label for="free-accommodation">Value of Rent-Free Accommodation: </label>
+                    <input type="number" name="free-accommodation" id="free-accommodation">
+                  </div>
+
+                  <div class="field padding-bottom--24">
+                    <label for="car-benefit">Value of Car Benefit: </label>
+                    <input type="number" name="car-benefit" id="car-benefit">
+                  </div>
+
+                  <div class="field padding-bottom--24">
+                    <label for="loan-benefit">Value of Loan Benefit: </label>
+                    <input type="number" name="loan-benefit" id="loan-benefit">
+                  </div>
+
+                  <button class="cta" value="submit">
+                    <span>Calculate Tax</span>
+                    <svg width="15px" height="10px" viewBox="0 0 13 10">
+                      <path d="M1,5 L11,5"></path>
+                      <polyline points="8 1 12 5 8 9"></polyline>
+                    </svg>
+                  </button>
+                </form>
+                <p id="result" class="result"></p>
+                <p>Note: 6% depreciation is considered on the basic salary.</p>
+              </div>
+
+              <div class="footer-link padding-top--24">
+                <div class="listing padding-top--24 padding-bottom--24 flex-flex center-center">
+                  <span><a href="#">© Tax Calculator</a></span>
+                  <span><a href="/contact">Contact</a></span>
+                  <span><a href="/">Home</a></span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <script>
+        // JavaScript to handle the form submission and tax calculation
+        const form = document.querySelector('#perquisite-form');
+
+        form.addEventListener('submit', (event) => {
+          event.preventDefault();
+
+          const basicSalary = parseFloat(document.getElementById('basic-salary').value);
+          const freeAccommodation = parseFloat(document.getElementById('free-accommodation').value || 0);
+          const carBenefit = parseFloat(document.getElementById('car-benefit').value || 0);
+          const loanBenefit = parseFloat(document.getElementById('loan-benefit').value || 0);
+
+          // Depreciation of 6% on basic salary
+          const depreciation = basicSalary * 0.06;
+          
+          // Calculate total perquisite value
+          const totalPerquisite = freeAccommodation + carBenefit + loanBenefit;
+
+          // Total taxable income (Salary - Depreciation + Perquisites)
+          const taxableIncome = basicSalary - depreciation + totalPerquisite;
+
+          // Assume a flat tax rate of 25% for simplicity
+          const taxAmount = taxableIncome * 0.25;
+
+          // Display the result
+          const resultElement = document.getElementById('result');
+          resultElement.textContent = `The calculated perquisite tax amount is: ₹${taxAmount.toFixed(2)}`;
+        });
+      </script>
+    </body>
+</html>
