@@ -144,26 +144,26 @@
                 <div class="formbg-inner padding-horizontal--48">
                   <form id="stripe-login">
                     <div class="field padding-bottom--24">
-                        <label for="amount">Base value</label>
-                        <input type="number" name = "amount" id = "amount" required></input>
+                        <label for="bvalue">Base value</label>
+                        <input type="number" name = "bvalue" id = "bvalue" required></input>
                     </div>
                     <div class="field padding-bottom--24">
                       <div class="grid--50-50">
-                        <label for="deductions">Area</label>
+                        <label for="area">Area</label>
 
                         <div class="reset-pass">
                           <a href="#">in sq ft</a>
                         </div>
                       </div>
-                      <input type="number" name = "deductions" id = "deductions"></input>
+                      <input type="number" name = "area" id = "area"></input>
                     </div>
 
                     <div class="field padding-bottom--24">
                         <div class="grid--50-50">
-                            <label for="percentage">Age of Property</label>
+                            <label for="age">Age of Property</label>
                         </div>
                         
-                        <select name="percentage" id = "percentage">
+                        <select name="age" id = "age">
                         <option value="0.95">Less than 10 years</option>
                         <option value="0.9">between 10-20 years</option>
                         <option value="0.8">between 20-30 years</option>
@@ -200,12 +200,12 @@
         form.addEventListener('submit', (event) => {
           event.preventDefault();
       
-          const amount = parseFloat(document.getElementById('amount').value);
-          const deductions = parseFloat(document.getElementById('deductions').value);
-          const percentage = parseFloat(document.getElementById('percentage').value);
+          const bvalue = parseFloat(document.getElementById('bvalue').value);
+          const area = parseFloat(document.getElementById('area').value);
+          const age = parseFloat(document.getElementById('age').value);
       
           // Calculation of GST
-          const taxAmount = (amount - deductions) * percentage;
+          const taxAmount = bvalue * area * age * 1.2
       
           const resultElement = document.getElementById('result');
           resultElement.textContent = `The calculated tax amount is: ₹${taxAmount.toFixed(2)}`;
