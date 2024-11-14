@@ -1,6 +1,6 @@
-# Tax-Advisor
+# Tax-Calculator
 
-A web-based tax advisor built with HTML, CSS, JavaScript, and Flask. This tool helps users estimate their tax liability and provides basic tax-related information.
+A web-based tax Calculator built with HTML, CSS, JavaScript, and Flask. This tool helps users estimate their tax liability and provides basic tax-related information.
 
 Features:
 
@@ -11,6 +11,7 @@ Real-time updates: Keeps up-to-date with the latest tax laws and regulations.
 Technologies Used:
 
 Frontend: HTML, CSS, JavaScript <br>
-Backend: Flask
+Frameworks: Bootstrap
+Library: Flask (Python)
 
 # This project is still under development
