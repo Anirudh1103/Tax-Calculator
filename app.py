@@ -2,6 +2,7 @@ from flask import Flask, request, render_template
 from services import *
 app = Flask(__name__)
 
+@app.route('/home')
 @app.route('/')
 def index():
     return render_template('index.html')
@@ -60,5 +61,16 @@ def ct():
 def entertainment():
     return render_template('entertainment.html')
 
+@app.route('/taxes')
+def tableTax():
+    return render_template('taxes.html')
+
+@app.route('/corpo-taxes')
+def corpotableTax():
+    return render_template('corpo_taxes.html')
+
+@app.route('/gst-table')
+def gsttable():
+    return render_template('gst-table.html')
 if __name__ == '__main__':
     app.run(debug=True)
