@@ -76,5 +76,6 @@ def gsttable():
 @app.route('/perquisite_tax')
 def perquisite_tax():
     return render_template('perquisite.html')
+
 if __name__ == '__main__':
     app.run(debug=True)
