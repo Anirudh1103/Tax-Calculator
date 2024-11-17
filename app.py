@@ -51,7 +51,7 @@ def propertytax():
 
 @app.route('/stt')
 def securityTax():
-    return render_template('stt.html')
+    return render_template('security_transaction_tax.html')
 
 @app.route('/customs_tax')
 def ct():
@@ -76,6 +76,11 @@ def gsttable():
 @app.route('/perquisite_tax')
 def perquisite_tax():
     return render_template('perquisite.html')
+@app.route('/sales_tax')
+def sales():
+    return render_template('sales_tax.html')
+
+
 
 if __name__ == '__main__':
     app.run(debug=True)
