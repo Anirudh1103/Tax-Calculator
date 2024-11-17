@@ -48,10 +48,7 @@ TAX-CALCULATOR/
 ├── TestCases.xlsx         # Excel file for test cases
 ├── requirements.txt       # Python dependencies
 ├── README.md              # Project description and instructions
-├── .gitignore             # Ignored files and folders
-└── env/                   # Virtual environment folder (DO NOT upload to GitHub)
-
-
+```
 
 ### HTML Pages
 - **`index.html`**: The landing page for the Tax Calculator.
