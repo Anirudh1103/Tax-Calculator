@@ -17,13 +17,35 @@ The **Tax Calculator** is a web-based application designed to compute various ty
 ## Project Structure
 
 ### Key Files and Directories
-- **`app.py`**: The main entry point for running the Flask application.
-- **`templates/`**: Contains HTML templates for various tax types, such as `income_tax.html`, `gst.html`, `property_tax.html`, etc.
-- **`static/`**: Holds static assets like CSS, JavaScript, and images (if any).
-- **`services.py`**: Includes the business logic and computations for various tax types.
-- **`test_service.py`**: Contains test cases to validate the correctness of tax calculations.
-- **`TestCases.xlsx`**: A spreadsheet documenting sample test cases and scenarios.
-- **`README.md`**: This documentation file explaining the project in detail.
+### TAX-CALCULATOR/
+├── static/
+│   ├── Images/            # Folder for storing images
+│   ├── form.css           # CSS for forms
+│   └── style.css          # General styling CSS
+├── templates/             # HTML templates
+│   ├── cgt.html
+│   ├── corporate_tax.html
+│   ├── customs.html
+│   ├── entertainment.html
+│   ├── gst-table.html
+│   ├── gst.html
+│   ├── income_tax.html
+│   ├── index.html         # Main homepage
+│   ├── perquisite.html
+│   ├── property_tax.html
+│   ├── sales_tax.html
+│   ├── security_transaction_tax.html
+│   ├── taxes.html
+│   └── TypesOfTaxes.html
+├── env/                   # Virtual environment folder (DO NOT upload to GitHub)
+├── app.py                 # Main Flask app
+├── services.py            # Contains service-related logic
+├── test_service.py        # Unit tests for service logic
+├── TestCases.xlsx         # Excel file for test cases
+├── requirements.txt       # Python dependencies
+├── README.md              # Project description and instructions
+└── .gitignore             # Files/folders to ignore in GitHub
+
 
 ### HTML Pages
 - **`index.html`**: The landing page for the Tax Calculator.
