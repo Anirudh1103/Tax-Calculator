@@ -17,7 +17,12 @@ The **Tax Calculator** is a web-based application designed to compute various ty
 ## Project Structure
 
 ### Key Files and Directories
-### TAX-CALCULATOR/
+# TAX-CALCULATOR
+
+## Project Structure
+
+```plaintext
+TAX-CALCULATOR/
 ├── static/
 │   ├── Images/            # Folder for storing images
 │   ├── form.css           # CSS for forms
@@ -37,14 +42,15 @@ The **Tax Calculator** is a web-based application designed to compute various ty
 │   ├── security_transaction_tax.html
 │   ├── taxes.html
 │   └── TypesOfTaxes.html
-├── env/                   # Virtual environment folder (DO NOT upload to GitHub)
 ├── app.py                 # Main Flask app
 ├── services.py            # Contains service-related logic
 ├── test_service.py        # Unit tests for service logic
 ├── TestCases.xlsx         # Excel file for test cases
 ├── requirements.txt       # Python dependencies
 ├── README.md              # Project description and instructions
-└── .gitignore             # Files/folders to ignore in GitHub
+├── .gitignore             # Ignored files and folders
+└── env/                   # Virtual environment folder (DO NOT upload to GitHub)
+
 
 
 ### HTML Pages
