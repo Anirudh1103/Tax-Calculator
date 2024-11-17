@@ -34,7 +34,7 @@ The **Tax Calculator** is a web-based application designed to compute various ty
 
 1. Clone the repository:
    ```bash
-   git clone https://github.com/your-username/tax-calculator.git
+   git clone https://github.com/Anirudh1103/Tax-Calculator.git
    cd tax-calculator
 
 2. Create a virtual environment (optional):
