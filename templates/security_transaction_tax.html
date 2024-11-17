@@ -1,0 +1,211 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Securities Transaction Tax (STT) Calculator</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link href = "{{url_for('static',filename = 'form.css')}}" rel = "stylesheet">
+    <link href = "{{url_for('static',filename = 'style.css')}}" rel = "stylesheet">
+    <style>
+        .cta {
+          position: relative;
+          margin: auto;
+          padding: 12px 18px;
+          transition: all 0.2s ease;
+          border: none;
+          background: none;
+          cursor: pointer;
+        }
+        
+        .cta:before {
+          content: "";
+          position: absolute;
+          top: 0;
+          left: 0;
+          display: block;
+          border-radius: 50px;
+          background: #b1dae7;
+          width: 45px;
+          height: 45px;
+          transition: all 0.3s ease;
+        }
+        
+        .cta span {
+          position: relative;
+          font-family: "Ubuntu", sans-serif;
+          font-size: 18px;
+          font-weight: 700;
+          letter-spacing: 0.05em;
+          color: #234567;
+        }
+        
+        .cta svg {
+          position: relative;
+          top: 0;
+          margin-left: 10px;
+          fill: none;
+          stroke-linecap: round;
+          stroke-linejoin: round;
+          stroke: #234567;
+          stroke-width: 2;
+          transform: translateX(-5px);
+          transition: all 0.3s ease;
+        }
+        
+        .cta:hover:before {
+          width: 100%;
+          background: #b1dae7;
+        }
+        
+        .cta:hover svg {
+          transform: translateX(0);
+        }
+        
+        .cta:active {
+          transform: scale(0.95);
+        }
+     </style>
+  </head>
+  <body>
+    <div class="login-root">
+        <div class="box-root flex-flex flex-direction--column" style="min-height: 100vh;flex-grow: 1;">
+          <div class="loginbackground box-background--white padding-top--64">
+            <div class="loginbackground-gridContainer">
+                <div class="box-root flex-flex" style="grid-area: top / start / 8 / end;">
+                    <div class="box-root" style="background-image: linear-gradient(white 0%, rgb(247, 250, 252) 33%); flex-grow: 1;">
+                    </div>
+                  </div>
+                  <div class="box-root flex-flex" style="grid-area: 4 / 2 / auto / 5;">
+                    <div class="box-root box-divider--light-all-2 animationLeftRight tans3s" style="flex-grow: 1;"></div>
+                  </div>
+                  <div class="box-root flex-flex" style="grid-area: 6 / start / auto / 2;">
+                    <div class="box-root box-background--blue800" style="flex-grow: 1;"></div>
+                  </div>
+                  <div class="box-root flex-flex" style="grid-area: 7 / start / auto / 4;">
+                    <div class="box-root box-background--blue animationLeftRight" style="flex-grow: 1;"></div>
+                  </div>
+                  <div class="box-root flex-flex" style="grid-area: 8 / 4 / auto / 6;">
+                    <div class="box-root box-background--gray100 animationLeftRight tans3s" style="flex-grow: 1;"></div>
+                  </div>
+                  <div class="box-root flex-flex" style="grid-area: 2 / 15 / auto / end;">
+                    <div class="box-root box-background--cyan200 animationRightLeft tans4s" style="flex-grow: 1;"></div>
+                  </div>
+                  <div class="box-root flex-flex" style="grid-area: 3 / 14 / auto / end;">
+                    <div class="box-root box-background--blue animationRightLeft" style="flex-grow: 1;"></div>
+                  </div>
+                  <div class="box-root flex-flex" style="grid-area: 4 / 17 / auto / 20;">
+                    <div class="box-root box-background--gray100 animationRightLeft tans4s" style="flex-grow: 1;"></div>
+                  </div>
+                  <div class="box-root flex-flex" style="grid-area: 5 / 14 / auto / 17;">
+                    <div class="box-root box-divider--light-all-2 animationRightLeft tans3s" style="flex-grow: 1;"></div>
+                </div>
+            </div>
+          </div>
+          <nav class="navbar">
+            <div class="logo">
+                <img src="/static/Images/main-logo.png" alt="Calculator Logo" class="main-logo"/> <!-- Use your preferred logo here -->
+                <span style="color:white;">Securities Transaction Tax (STT) Calculator</span>
+            </div>
+            <ul class="nav-links">
+                <li><a href="#">Home</a></li>
+                <li><a href="/TypesOfTaxes">More</a></li>
+            </ul>
+          </nav>
+          <div class="box-root padding-top--24 flex-flex flex-direction--column" style="flex-grow: 1; z-index: 9;">
+            <div class="box-root padding-top--48 padding-bottom--24 flex-flex flex-justifyContent--center">
+              <h1><a rel="dofollow">Securities Transaction Tax (STT) Calculator</a></h1>
+            </div>
+            <div class="formbg-outer">
+              <div class="formbg">
+                <div class="formbg-inner padding-horizontal--48">
+                  <form id="stt-form">
+                    <div class="field padding-bottom--24">
+                        <label for="transaction-value">Transaction Value (in ₹): </label>
+                        <input type="number" name="transaction-value" id="transaction-value" required></input>
+                    </div>
+                    <div class="field padding-bottom--24">
+                      <div class="grid--50-50">
+                        <label for="transaction-type">Select Transaction Type: </label>
+                      </div>
+                      <select name="transaction-type" id="transaction-type">
+                        <option value="equity-delivery">Equity Delivery (Sale of Shares)</option>
+                        <option value="equity-intraday">Equity Intraday (Intraday Trading)</option>
+                        <option value="futures-options">Futures & Options</option>
+                      </select>
+                    </div>
+
+                    <button class="cta" type="submit">
+                        <span>Calculate STT</span>
+                        <svg width="15px" height="10px" viewBox="0 0 13 10">
+                          <path d="M1,5 L11,5"></path>
+                          <polyline points="8 1 12 5 8 9"></polyline>
+                        </svg>
+                    </button>
+                  </form>
+                  <p id="result" class="result"></p>
+                </div>
+
+              <div class="footer-link padding-top--24">
+                <div class="listing padding-top--24 padding-bottom--24 flex-flex center-center">
+                  <span><a href="#">© STT Calculator</a></span>
+                  <span><a href="/contact">Contact</a></span>
+                  <span><a href="/">Home</a></span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <script>
+        const form = document.querySelector('#stt-form');
+        
+        form.addEventListener('submit', function (event) {
+          event.preventDefault();
+
+          // Get input values
+          const transactionValue = parseFloat(document.getElementById('transaction-value').value);
+          const transactionType = document.getElementById('transaction-type').value;
+
+          // Validate inputs
+          if (isNaN(transactionValue) || transactionValue <= 0) {
+              alert("Please enter a valid transaction value.");
+              return;
+          }
+
+          let sttRate;
+          
+          // Set STT rate based on transaction type
+          switch (transactionType) {
+              case 'equity-delivery':
+                  sttRate = 0.1 / 100;  // 0.1% for Equity Delivery
+                  break;
+              case 'equity-intraday':
+                  sttRate = 0.025 / 100;  // 0.025% for Intraday Trading
+                  break;
+              case 'futures-options':
+                  sttRate = 0.05 / 100;  // 0.05% for Futures & Options
+                  break;
+              default:
+                  alert("Invalid transaction type.");
+                  return;
+          }
+
+          // Calculate STT
+          const sttAmount = transactionValue * sttRate;
+
+          // Display result
+          const resultElement = document.getElementById('result');
+          resultElement.innerHTML = `
+              <p><strong>Transaction Value:</strong> ₹${transactionValue.toFixed(2)}</p>
+              <p><strong>Transaction Type:</strong> ${transactionType.replace(/-/g, ' ').toUpperCase()}</p>
+              <p><strong>STT Rate:</strong> ${sttRate * 100}%</p>
+              <p><strong>Calculated STT:</strong> ₹${sttAmount.toFixed(2)}</p>
+          `;
+        });
+      </script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+  </body>
+</html>
