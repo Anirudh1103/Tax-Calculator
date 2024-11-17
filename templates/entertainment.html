@@ -137,23 +137,23 @@
   </nav>
           <div class="box-root padding-top--24 flex-flex flex-direction--column" style="flex-grow: 1; z-index: 9;">
             <div class="box-root padding-top--48 padding-bottom--24 flex-flex flex-justifyContent--center">
-              <h1><a rel="dofollow">Capital Gain  Tax Calculator</a></h1>
+              <h1><a rel="dofollow">Entertainment tax Calculator</a></h1>
             </div>
             <div class="formbg-outer">
               <div class="formbg">
                 <div class="formbg-inner padding-horizontal--48">
                   <form id="stripe-login">
                     <div class="field padding-bottom--24">
-                        <label for="bvalue">Selling price</label>
+                        <label for="bvalue">Cost price of Ticket</label>
                         
                         <input type="number" name = "sp" id = "sp" required></input>
                     </div>
                     <div class="field padding-bottom--24">
                       <div class="grid--50-50">
-                        <label for="area">Cost price</label>
+                        <label for="area">Number of Tickets</label>
 
                         <div class="reset-pass">
-                          <a href="#">in Rs</a>
+                          <a href="#">in number</a>
                         </div>
                       </div>
                       <input type="number" name = "cp" id = "cp"></input>
@@ -161,24 +161,15 @@
 
                     <div class="field padding-bottom--24">
                         <div class="grid--50-50">
-                            <label for="age">Age of Asset</label>
+                            <label for="age">Type</label>
                         </div>
                         
                         <select name="age" id = "age">
-                        <option value="2">Less than 2 years(STCG)</option>
-                        <option value="3">More than 2 years(LTCG)</option>
+                        <option value="2">Amusement park</option>
+                        <option value="3">Movie, Theater shows etc</option>
                         </select>
                       </div>
-                      <div class="field padding-bottom--24">
-                        <div class="grid--50-50">
-                            <label for="type">Asset type</label>
-                        </div>
-                        
-                        <select name="type" id = "type">
-                        <option value="0.15">Equity, Equity Mutual Funds .</option>
-                        <option value="0.30">Debt Funds, Gold, Real Estate, Gold, Bonds etc</option>
-                        </select>
-                      </div>
+                      
 
                       <button class="cta" value="submit">
                         <span>Calculate Tax</span>
@@ -210,15 +201,16 @@
           event.preventDefault();
       
           const sp = parseFloat(document.getElementById('sp').value);
-          const cp = parseFloat(document.getElementById('cp').value);
+          var qty = parseFloat(document.getElementById('cp').value);
           const age = parseFloat(document.getElementById('age').value);
-          var type=parseFloat(document.getElementById('type').value);
-          if (age>2 & type==.15)
-                type=.10
-          if (age>2 & type==.30)
-                type=.20
-           console.log(sp,cp,type,age);     
-          const taxAmount =(sp - cp) * type;
+          //var type=parseFloat(document.getElementById('type').value);
+          if (age<=2)
+                percentage=.20
+          else
+            percentage=.15
+        
+           console.log(sp,qty,age);     
+          const taxAmount =(sp*qty)*percentage;
           console.log(taxAmount);
           const resultElement = document.getElementById('result');
           resultElement.textContent = `The calculated tax amount is: ₹${taxAmount.toFixed(2)}`;
